@@ -82,3 +82,40 @@ VISUALISATION:
 [-100, 1, 0, 23, -4, 50, 44, 100, 2342]
 [-100, -4, 0, 23, 1, 44, 50, 100, 2342]
 '''
+
+# ====================================
+#       Merge Sort Algorithm
+# ====================================
+
+def mergeSort(array):
+    if len(array) > 1:
+        midpt = len(array) // 2      # Find Midpoint
+        right = array[midpt:]
+        left = array[:midpt]
+
+        mergeSort(right)
+        mergeSort(left)
+
+        i = j = k = 0  # Initialize Counters
+
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                array[k] = left[i]
+                i += 1
+            else:
+                array[k] = right[j]
+                j += 1
+            k += 1
+            # print(array)
+
+        while i < len(left):
+            array[k] = left[i]
+            i += 1
+            k += 1
+
+        while j < len(right):
+            array[k] = right[j]
+            j += 1
+            k += 1
+
+    return array
